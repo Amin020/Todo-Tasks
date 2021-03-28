@@ -1,0 +1,24 @@
+<div class="side-menu-container" [@SideNavAnimations]="isMenuOpened">
+  <div class="menu-header">
+    <svg-icon class="side-nav-icon" (click)="toggleSideMenu()" src="assets/icons/side-nav/side-nav.svg"></svg-icon>
+    <svg-icon class="search-icon" [ngClass]="{'display-none': !isMenuOpened}" src="assets/icons/side-nav/search.svg">
+    </svg-icon>
+  </div>
+  <div class="menu-content">
+    <div class="loged-in-user">
+      <img src="assets/img/mohamed_mostafa.jpeg" alt="" class="user-profile-img">
+      <span [ngClass]="{'display-none': !isMenuOpened}" class="user-name">
+        Amin
+      </span>
+      <svg-icon class="arrow-bottom" [ngClass]="{'display-none': !isMenuOpened}"
+        src="assets/icons/side-nav/arrow-right.svg"></svg-icon>
+    </div>
+    <div class="menu-items-container" *ngFor="let menuItem of menuItems" (click)="emitNavigation(menuItem)">
+      <div class="menu-item" [@menuListAnimation]="!isMenuOpened"
+        [ngClass]="{'justify-center': !isMenuOpened, 'active' : menuItem.title === activePageTitle}">
+        <svg-icon class="menu-item-icon" [src]="menuItem.iconSrc"></svg-icon>
+        <span class="menu-item-title" [ngClass]="{'display-none': !isMenuOpened}">{{menuItem.title}}</span>
+      </div>
+    </div>
+  </div>
+</div>

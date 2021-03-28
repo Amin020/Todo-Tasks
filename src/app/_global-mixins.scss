@@ -1,0 +1,43 @@
+@mixin transition($property, $duration, $ease) {
+  -webkit-transition: $property $duration $ease;
+  -moz-transition: $property $duration $ease;
+  -o-transition: $property $duration $ease;
+  transition: $property $duration $ease;
+}
+
+@mixin button($bg, $color, $height, $hover, $width: fit-content) {
+  @include transition(all, 0.2s, ease);
+  height: $height;
+  width: $width;
+  border-radius: 3px;
+  background: $bg;
+  text-align: center;
+  color: $color;
+  border: none;
+  display: block;
+  outline: none;
+  font-size: 18px;
+  cursor: pointer;
+
+  &:hover {
+    background: $hover;
+  }
+
+  &:disabled {
+    background-color: #949494;
+    opacity: 0.5;
+    color: $color;
+    outline: none;
+    cursor: not-allowed;
+    &:focus {
+      outline: none;
+      cursor: not-allowed;
+    }
+    &:active {
+      opacity: 0.5;
+    }
+  }
+  &:active {
+    opacity: 0.8;
+  }
+}

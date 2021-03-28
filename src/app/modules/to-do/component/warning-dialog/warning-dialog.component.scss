@@ -1,0 +1,67 @@
+.pop-content {
+  .dialog-header {
+    display: flex;
+    align-items: center;
+    svg-icon {
+      margin-inline-end: 16px;
+    }
+  }
+  .pop-message-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-block-start: 28px;
+
+    .text-message {
+      font-size: 14px;
+      line-height: 1.71;
+      color: #5a6c87;
+      margin-inline-start: 20px;
+      word-break: break-all;
+    }
+  }
+
+  .heading-title {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #363636;
+    word-break: break-all;
+  }
+}
+
+.btns-container {
+  height: 35px;
+  width: 100%;
+  border-radius: 4px;
+  background-color: #fbfcff;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  margin-top: 18px;
+
+  .btn {
+    padding: 10px 25px;
+    border-radius: 3px;
+    border: none;
+    outline: unset;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1;
+    color: #363636;
+    text-transform: capitalize;
+    cursor: pointer;
+    background-color: #ffffff;
+  }
+
+  .btn-red {
+    background-color: #ff4352;
+    color: #ffffff;
+  }
+
+  .btn-green {
+    background-color: #00d27f;
+    color: #ffffff;
+  }
+}

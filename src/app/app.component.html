@@ -1,0 +1,19 @@
+<div class="app-container">
+  <mat-sidenav-container class="content-container sidebar-menu">
+    <mat-sidenav #snav [mode]="menuSidNavMode" [@menuMinAnimation]="!isMenuOpened" [opened]="true"
+      [ngStyle]="{'width': isMenuOpened ? '250px' : '80px'}">
+      <app-side-menu (toggleMenu)="toggleSideMenu()" (navigation)="navigateToMenuItemPage($event)">
+      </app-side-menu>
+    </mat-sidenav>
+    <mat-sidenav-content [ngStyle]="{'margin-left': isMenuOpened ? '250px' : '80px'}">
+      <header class="header">
+        <span class="page-title">
+          {{ activePageTitle | titlecase }}
+        </span>
+      </header>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+<ng-snotify [class]="notificationsStyle"></ng-snotify>

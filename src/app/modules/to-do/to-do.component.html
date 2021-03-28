@@ -1,0 +1,85 @@
+<div class="to-do-page-container">
+
+    <header>
+        <span class="filter-by-title">
+            Filter By
+        </span>
+        <div class="add-new-task" (click)="addNewToDo()">
+            <svg-icon class="add-new-task-icon" src="assets/icons/plus-button.svg"></svg-icon>
+            <span class="add-new-task-text">
+                New Task
+            </span>
+        </div>
+    </header>
+
+    <section class="filter-by-section">
+        <div class="filter-field-container">
+            <span>
+                Date
+            </span>
+            <div class="date-input-container">
+                <input class="input-field date-input" placeholder="Select Date" [owlDateTimeTrigger]="datePicker"
+                    selectMode="range" [owlDateTime]="datePicker" [(ngModel)]="dateSearch" readonly
+                    (dateTimeInput)="filterTasks()">
+                <owl-date-time #datePicker [pickerType]="'calendar'"></owl-date-time>
+                <!-- <svg-icon src="assets/icons/"></svg-icon> -->
+            </div>
+        </div>
+        <div class="filter-field-container">
+            <span>
+                Title
+            </span>
+            <input class="input-field" type="text" placeholder="Type Title" [(ngModel)]="titleSearch"
+                (keyup.enter)="filterTasks()">
+        </div>
+        <div class="filter-field-container">
+            <span>
+                Group
+            </span>
+            <input class="input-field" type="text" placeholder="Select Group" [(ngModel)]="groupSearch">
+        </div>
+    </section>
+
+    <main *ngFor="let todoGroup of todosGroups; let firstItem = first">
+        <div class="group-header">
+            <span class="group-name">
+                {{ todoGroup.name }}
+            </span>
+            <div *ngIf="firstItem && tasksStatus !== 'deleted'" class="group-actions-buttons">
+                <button class="delete-selected-btn" [disabled]="selection.selected.length === 0"
+                    (click)="removeTasks(selection.selected)">
+                    <svg-icon class="delete-icon" src="assets/icons/task/delete.svg"></svg-icon>
+                    <span>
+                        Delete Selected
+                    </span>
+                </button>
+                <button class="done-btn" [disabled]="selection.selected.length === 0"
+                    (click)="markTasksAsDone(selection.selected)">
+                    <svg-icon src="assets/icons/task/checked.svg"></svg-icon>
+                    <span>
+                        Done
+                    </span>
+                </button>
+            </div>
+        </div>
+        <section class="task-row" *ngFor="let groupTask of todoGroup.tasks">
+            <div *ngIf="firstItem && tasksStatus !== 'deleted'" class="check-box-container"
+                [ngClass]="{'checked': selection.isSelected(groupTask)}" (click)="toggleSelection(groupTask)">
+                <svg-icon src="assets/icons/task/checked.svg"></svg-icon>
+            </div>
+            <span class="task-name">
+                {{ groupTask.name }}
+            </span>
+            <div *ngIf="tasksStatus !== 'deleted'" class="task-actions-icons">
+                <div *ngIf="groupTask.status !== todoGroupsStatus.deleted" class="delete-icon-container"
+                    (click)="removeTasks([groupTask])">
+                    <svg-icon class="delete-icon" src="assets/icons/task/delete.svg"></svg-icon>
+                </div>
+                <div *ngIf="groupTask.status !== todoGroupsStatus.done" class="done-icon-container"
+                    (click)="markTasksAsDone([groupTask])">
+                    <svg-icon src="assets/icons/task/checked.svg"></svg-icon>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>

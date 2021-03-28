@@ -1,0 +1,232 @@
+@import "./../../global-mixins";
+
+.to-do-page-container {
+  height: calc(100vh - 119px);
+  width: calc(100% - 60px);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  background-image: linear-gradient(181deg, #4ba2d1 8%, #d0e4e0 117%);
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+
+  .filter-by-title {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+  }
+
+  .add-new-task {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin-inline-start: auto;
+    padding: 7px 12px 8px 11px;
+    border-radius: 5px;
+    background-color: #183c5b;
+    cursor: pointer;
+
+    .add-new-task-icon {
+      line-height: 0;
+      margin-inline-end: 10px;
+    }
+
+    .add-new-task-text {
+      font-family: Roboto;
+      font-size: 16px;
+      font-weight: 500;
+      color: #ffffff;
+    }
+  }
+}
+
+.filter-by-section {
+  padding: 15px 20px;
+  border-radius: 2px;
+  background-color: #ffffff;
+  margin-top: 12px;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+
+  .filter-field-container {
+    display: flex;
+    flex-direction: column;
+    margin-inline-end: 40px;
+
+    span {
+      display: block;
+      font-size: 18px;
+      color: #363636;
+      margin-bottom: 5px;
+    }
+
+    .input-field {
+      height: 36px;
+      width: 187px;
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 0 14px;
+      border: none;
+
+      &.date-input {
+        padding-inline-end: 31px;
+      }
+    }
+  }
+}
+
+main {
+  padding-bottom: 30px;
+
+  .group-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    .group-name {
+      display: flex;
+      align-items: center;
+      height: 36px;
+      width: fit-content;
+      font-size: 18px;
+      font-weight: 500;
+      color: #ffffff;
+      padding: 0 15px;
+      border-radius: 3px;
+      background-color: rgba(65, 121, 149, 0.5);
+    }
+
+    .group-actions-buttons {
+      display: flex;
+      align-items: center;
+      margin-inline-start: auto;
+
+      .delete-selected-btn {
+        @include button(#ff9c9c, #ffffff, 36px, #ff9c9c);
+        margin-inline-end: 10px;
+        padding: 0 15px;
+        display: flex !important;
+        align-items: center;
+
+        svg-icon {
+          display: block;
+          margin-inline-end: 5px;
+
+          &.delete-icon {
+            height: 18px;
+            width: 15px;
+            fill: #ffffff;
+          }
+        }
+      }
+
+      .done-btn {
+        @include button(#86e0a4, #ffffff, 36px, #86e0a4);
+        padding: 0 15px;
+        display: flex !important;
+        align-items: center;
+
+        svg-icon {
+          display: block;
+          margin-inline-end: 5px;
+        }
+      }
+    }
+  }
+
+  .task-row {
+    height: 51px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
+    background-color: #ffffff;
+    margin-bottom: 5px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .check-box-container {
+      height: 20px;
+      width: 20px;
+      border-radius: 1px;
+      border: solid 1px #949494;
+      background-color: #ffffff;
+      margin-inline-end: 10px;
+      transition: background-color 0.2s;
+      cursor: pointer;
+
+      svg-icon {
+        display: none;
+      }
+
+      &.checked {
+        background-color: #427a95;
+        border-radius: 2px;
+
+        ::ng-deep svg-icon {
+          height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          svg {
+            height: 10.5px;
+            width: 14px;
+          }
+        }
+      }
+    }
+
+    .task-name {
+      font-size: 18px;
+      color: #363636;
+    }
+
+    .task-actions-icons {
+      display: flex;
+      align-items: center;
+      margin-inline-start: auto;
+
+      .delete-icon-container,
+      .done-icon-container {
+        height: 33px;
+        width: 33px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+
+        svg-icon {
+          display: flex;
+          align-items: center;
+
+          &.delete-icon {
+            height: 18px;
+            width: 15px;
+            fill: #ffffff;
+          }
+        }
+      }
+
+      .delete-icon-container {
+        margin-inline-end: 15px;
+        background-color: #ff9c9c;
+      }
+
+      .done-icon-container {
+        background-color: #86e0a4;
+      }
+    }
+  }
+}

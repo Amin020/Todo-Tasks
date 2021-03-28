@@ -1,0 +1,91 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.material {
+  @import "~ng-snotify/styles/material";
+}
+
+/* override firefox scrollbar style */
+* {
+  scrollbar-color: #5d6c85 transparent;
+  scrollbar-width: thin;
+}
+
+/* override scrollbar style */
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px transparent;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5d6c85;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5d6c85;
+}
+
+.snotifyToast__body {
+  img {
+    width: 23px;
+    height: 20.2px;
+    margin-top: 5px;
+  }
+}
+
+.snotify-test-style {
+  font-size: 12px;
+  line-height: 1.67;
+  text-align: start;
+  color: #5d6c85;
+  width: 80%;
+  margin-inline-start: 16px;
+}
+
+.snotify-circle-succes-style {
+  min-width: 23px;
+  min-height: 23px;
+  border-radius: 50%;
+  background-color: #00d27f;
+  margin-top: 5px;
+}
+
+.snotify-circle-error-style {
+  min-width: 23px;
+  min-height: 23px;
+  border-radius: 50%;
+  background-color: #f54b5e;
+  margin-top: 5px;
+}
+
+.snotifyToast__body {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.material .snotifyToast {
+  box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.1);
+}
+
+.display-none {
+  display: none !important;
+}

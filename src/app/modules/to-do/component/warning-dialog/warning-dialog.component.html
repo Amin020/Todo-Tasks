@@ -1,0 +1,24 @@
+<div class="template-container">
+  <div class="pop-content">
+    <div class="dialog-header">
+      <svg-icon [src]="iconSrc"></svg-icon>
+      <div class="heading-title">
+        {{ title }}
+      </div>
+    </div>
+    <div class="pop-message-container">
+      <div class="text-message">
+        <div>{{textMessage}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btns-container">
+    <button class="btn" *ngFor="let btn of buttons" (click)="closeDialog(btn.type)" [ngClass]="{
+        'btn-red': isRedButtonBg(btn),
+        'btn-green': isGreenButtonBg(btn) }">
+      {{btn.name}}
+    </button>
+
+  </div>
+</div>
